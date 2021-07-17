@@ -1,8 +1,13 @@
+var url = window.location.href;
+
+var swLocation = '/twittor/sw.js';
+
 if (navigator.serviceWorker) {
-    navigator.serviceWorker.register('/sw.js')
+    if (url.includes('localhost')){
+        swLocation = '/ws.js';
+    }
+    navigator.serviceWorker.register(swLocation);
 }
-
-
 
 // Referencias de jQuery
 
@@ -21,8 +26,6 @@ var txtMensaje  = $('#txtMensaje');
 
 // El usuario, contiene el ID del héroe seleccionado
 var usuario;
-
-
 
 
 // ===== Codigo de la aplicación
